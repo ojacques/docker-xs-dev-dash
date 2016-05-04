@@ -275,18 +275,12 @@
               "fill": "none",
               "groupByTags": [],
               "measurement": "CA",
-              "query": "SELECT last(value) FROM \"CA\" WHERE \"priority\" = 'Minor' AND $timeFilter GROUP BY time($interval) fill(none)",
-              "tags": [
-                {
-                  "key": "priority",
-                  "operator": "=",
-                  "value": "Minor"
-                }
-              ]
+              "query": "SELECT value FROM \"CA\" WHERE \"priority\" = 'Minor' OR \"priority\" = 'Trivial' ORDER BY time LIMIT 2",
+              "rawQuery": "true"
             }
           ],
           "thresholds": "0,25,50",
-          "title": "Minor CA",
+          "title": "Minor/Trivial CA",
           "type": "singlestat",
           "valueFontSize": "200%",
           "valueMaps": [
@@ -296,7 +290,7 @@
               "value": "null"
             }
           ],
-          "valueName": "current"
+          "valueName": "total"
         },
         {
           "cacheTimeout": null,
@@ -1331,6 +1325,6 @@
   },
   "refresh": "30s",
   "schemaVersion": 6,
-  "version": 57,
+  "version": 58,
   "links": []
 }

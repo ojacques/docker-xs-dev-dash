@@ -1,7 +1,7 @@
 IMG_NAME=ring3-dash
 DATA_CON=$(IMG_NAME)-data
 DASH_CON=$(IMG_NAME)
-PORTS=-p 80:80
+PORTS=-p 80:80 -p 8083:8083 -p 8086:8086
 VOLUMES=--volumes-from $(DATA_CON) -v /etc/localtime:/etc/localtime:ro
 DEV_VOL=-v $(shell dirname $(realpath $(lastword $(MAKEFILE_LIST)))):/host
 
